@@ -1,1 +1,1 @@
-# scala101
+# scala-workshop
