@@ -1,0 +1,20 @@
+version: '2'
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
+      GF_USER_AUTO_ASSIGN_ORG_ID: "true"
+    volumes:
+      - ./datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
