@@ -1,3 +1,7 @@
+/**
+The signum of a number is 1 if the number is positive, -1 if it is negative, and 0 if it is zero. Write a function that computes this value.
+*/
+
 println("Enter an integer: ")
 try {
   val input = scala.io.StdIn.readLine().toInt
