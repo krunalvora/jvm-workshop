@@ -1,5 +1,5 @@
 package com.github.krunalvora.HelloWorld
 
-object scala extends App {
+object HelloWorld extends App {
   println("Hello World!")
 }
