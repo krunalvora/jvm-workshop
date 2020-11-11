@@ -1,1 +1,1 @@
-# scala-workshop
+# jvm-workshop
