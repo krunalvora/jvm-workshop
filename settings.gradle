@@ -1,3 +1,4 @@
 rootProject.name = 'jvm-workshop'
 
 include ':UCSDUnfoldingMaps'
+include ':java-practice'
