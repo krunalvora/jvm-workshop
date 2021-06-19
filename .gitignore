@@ -2,3 +2,7 @@ build/
 gradlew.bat
 .idea/
 .gradle/
+.vscode
+.project
+.classpath
+.settings
