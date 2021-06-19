@@ -5,4 +5,5 @@ gradlew.bat
 .vscode
 .project
 .classpath
-.settings
+.settings/
+bin/
