@@ -21,8 +21,7 @@ public class CompletableFuturesDemo {
     Supplier<String> supplierTask = () -> String.format("Running Lambda SupplierTask in thread: %s ...",
           Thread.currentThread().getName());
     CompletableFuture<String> supplierTaskFuture = CompletableFuture.supplyAsync(supplierTask);
-
-
+    
     Thread.sleep(6000);
 
   }
