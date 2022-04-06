@@ -11,6 +11,11 @@ public class Arrays2D {
         System.out.println(Arrays.deepToString(arr));
 
 
+        // Sort 2D array using lambda comparator
+        Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
+
+        System.out.println(Arrays.deepToString(arr));
+
 
     }
     
