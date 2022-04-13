@@ -1,4 +1,4 @@
-package com.github.krunalvora.snippets;
+package com.github.krunalvora;
 
 class LinkedLists {
 
