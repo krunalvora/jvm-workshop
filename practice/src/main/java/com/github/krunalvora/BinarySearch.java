@@ -1,6 +1,5 @@
 package com.github.krunalvora;
 
-import java.util.Arrays;
 
 public class BinarySearch {
 
@@ -12,9 +11,9 @@ public class BinarySearch {
         
     }
 
-    public static boolean contains(int[] nums, int target) {
 
-        if (nums == null) return false;
+    public static boolean contains(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return false;
 
         int left = 0;
         int right = nums.length - 1;
@@ -28,19 +27,97 @@ public class BinarySearch {
         return false;
     }
 
-    public static int firstOccurrence(int[] nums) {
-        return 0;
+
+    public static int firstOccurrence(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return -1;
+
+        int left = 0;
+        int right = nums.length - 1;
+
+        int ans = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                ans = mid;
+                right = mid - 1;
+            }
+        }
+        return ans;
     }
 
-    public static int lastOccurrence(int[] nums) {
-        return 0;
+
+    public static int lastOccurrence(int[] nums, int target) {
+        if (nums == null || nums.length == 0) return -1;
+
+        int left = 0;
+        int right = nums.length - 1;
+
+        int ans = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                ans = mid;
+                left = mid + 1;
+            }
+        }
+        return ans;
     }
 
-    public static int leastGreaterThan(int[] nums) {
-        return 0;
+    // First occurrence of the element least greater than the target
+    public static int leastGreaterThan(int[] nums, int target) {
+        
+        int ans = -1;
+
+        if (nums == null || nums.length == 0) return ans;
+        if (nums[nums.length - 1] == target) return ans;
+ 
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > target) {
+                ans = mid;
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return ans;
     }
 
-    public static int greatestLesserThan(int [] nums) {
-        return 0;
+    // Last occurrence of the element greatest lesser than the target
+    public static int greatestLesserThan(int [] nums, int target) {
+        int ans = -1;
+        if (nums == null || nums.length == 0) return ans;
+        if (nums[0] == target) return ans;
+ 
+        int left = 0;
+        int right = nums.length - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] > target) {
+                right = mid - 1;
+            } else if (nums[mid] < target) {
+                ans =  mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return ans;
     }
 }
