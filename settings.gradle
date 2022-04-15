@@ -2,4 +2,4 @@ rootProject.name = 'jvm-workshop'
 
 include ':async'
 include ':json-serde'
-include ':practice'
+include ':java-practice'
