@@ -1,4 +1,4 @@
-package com.github.krunalvora;
+package com.github.krunalvora.algorithms;
 
 
 public class BinarySearch {

@@ -1,4 +1,4 @@
-package com.github.krunalvora;
+package com.github.krunalvora.datastructures;
 
 import java.util.Arrays;
 

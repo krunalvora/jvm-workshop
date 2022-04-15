@@ -1,4 +1,4 @@
-package com.github.krunalvora;
+package com.github.krunalvora.algorithms;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
