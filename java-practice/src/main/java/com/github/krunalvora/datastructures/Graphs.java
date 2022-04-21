@@ -9,18 +9,35 @@ public class Graphs {
         /*
 
         0 - 1 - 2
-        | / | /
-        4 - 3
+        |   | 
+        4   3
 
         */
 
-        AdjacencyList graph = new AdjacencyList();
-        graph.addNode(0);
-        graph.addNode(1);
+        // With an adjacency list
+        AdjacencyList graphAdjacencyList = new AdjacencyList();
+        graphAdjacencyList.addNode(0);
+        graphAdjacencyList.addNode(1);
+        graphAdjacencyList.addNode(2);
+        graphAdjacencyList.addNode(3);
+        graphAdjacencyList.addNode(4);
 
-        graph.addEdge(0, 1);
+        graphAdjacencyList.addEdge(0, 1);
+        graphAdjacencyList.addEdge(1, 2);
+        graphAdjacencyList.addEdge(0, 4);
+        graphAdjacencyList.addEdge(1, 3);
 
-        graph.printAdjacencyList();
+        graphAdjacencyList.printAdjacencyList();
+
+        graphAdjacencyList.dfs();
+
+
+        // with an adjacency matrix
+        AdjacencyMatrix graphAdjacencyMatrix = new AdjacencyMatrix(3);
+        graphAdjacencyMatrix.addEdge(0, 1);
+        graphAdjacencyMatrix.addEdge(0, 2);
+
+        graphAdjacencyMatrix.printAdjacencyMatrix();
     }
     
 }
@@ -75,6 +92,29 @@ class AdjacencyList {
         for (int node: adjacencyList.keySet()) {
             System.out.println(node + " : " + adjacencyList.get(node));
         }
+    }
+
+    public void dfs() {
+
+        Stack<Integer> stack = new Stack<>();
+        Set<Integer> visited = new HashSet<>();
+
+        for (int node: adjacencyList.keySet()) {
+            stack.add(node);
+            while (!stack.isEmpty()) {
+                int popped = stack.pop();
+                if (!visited.contains(popped)) {
+                    visited.add(popped);
+                    System.out.print(popped + " ");
+                    List<Integer> neighbors = adjacencyList.get(popped);
+                    for (int neighbor: neighbors) {
+                        stack.add(neighbor);
+                    }
+                }
+            }
+
+        }
+        System.out.println();
     }
 
 }
