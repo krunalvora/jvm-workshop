@@ -35,19 +35,49 @@ public class Graph {
     }
 
     public void dfs() {
+        System.out.println("DFS for graph: ");
         for (int node: adjacencyList.keySet()) {
             if (!visited.contains(node)) {
-                dfsRec(node);
+                dfsHelper(node);
+            }
+        }
+        visited.clear();
+    }
+
+    // dfs recursive helper
+    public void dfsHelper(int node) {
+        System.out.println("Visiting node: " + node);
+        visited.add(node);
+        for (int neighbor: adjacencyList.get(node)) {
+            if (!visited.contains(neighbor)) {
+                dfsHelper(neighbor);
             }
         }
     }
 
-    public void dfsRec(int node) {
-        for (int neighbor: adjacencyList.get(node)) {
-            if (!visited.contains(neighbor)) {
-                visited.add(neighbor);
-                System.out.println("Visiting node: " + neighbor);
-                dfsRec(neighbor);
+    public void bfs() {
+        System.out.println("BFS for graph: ");
+        for (int node: adjacencyList.keySet()) {
+            if (!visited.contains(node)) {
+                bfsHelper(node);
+            }
+        }
+        visited.clear();
+    }
+
+    public void bfsHelper(int node) {
+
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            int polled = queue.poll();
+            System.out.println("Visiting node: " + polled);
+            visited.add(polled);
+            for (int neighbor: adjacencyList.get(polled)) {
+                if (!visited.contains(neighbor)) {
+                    queue.add(neighbor);
+                }
             }
         }
     }

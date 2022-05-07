@@ -28,6 +28,7 @@ public class GraphMain {
         graph.print();
 
         graph.dfs();
+        graph.bfs();
 
         // with an adjacency matrix
         // Graph2 graph2 = new Graph2(3);
