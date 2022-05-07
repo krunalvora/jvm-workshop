@@ -55,6 +55,22 @@ public class Graph {
         }
     }
 
+    public void dfsHelperItr(int node) {
+        Stack<Integer> stack = new Stack<>();
+        stack.add(node);
+
+        while (!stack.isEmpty()) {
+            int popped = stack.pop();
+            System.out.println("Visiting node: " + popped);
+            visited.add(popped);
+            for (int neighbor: adjacencyList.get(popped)) {
+                if (!visited.contains(neighbor)) {
+                    stack.push(neighbor);
+                }
+            }
+        }
+    }
+
     public void bfs() {
         System.out.println("BFS for graph: ");
         for (int node: adjacencyList.keySet()) {
@@ -81,31 +97,5 @@ public class Graph {
             }
         }
     }
-
-    
-
-    // iterative dfs
-    public void dfsItr() {
-        Stack<Integer> stack = new Stack<>();
-        Set<Integer> visited = new HashSet<>();
-
-        for (int node: adjacencyList.keySet()) {
-            stack.add(node);
-            while (!stack.isEmpty()) {
-                int popped = stack.pop();
-                if (!visited.contains(popped)) {
-                    visited.add(popped);
-                    System.out.print(popped + " ");
-                    List<Integer> neighbors = adjacencyList.get(popped);
-                    for (int neighbor: neighbors) {
-                        stack.add(neighbor);
-                    }
-                }
-            }
-        }
-        System.out.println();
-    }
-
-
 
 }
