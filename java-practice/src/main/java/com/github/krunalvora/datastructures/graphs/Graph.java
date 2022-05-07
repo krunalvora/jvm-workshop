@@ -46,12 +46,14 @@ public class Graph {
 
     // dfs recursive helper
     public void dfsHelper(int node) {
+        // base case
+        if (visited.contains(node)) return;
+
         System.out.println("Visiting node: " + node);
         visited.add(node);
+
         for (int neighbor: adjacencyList.get(node)) {
-            if (!visited.contains(neighbor)) {
-                dfsHelper(neighbor);
-            }
+            dfsHelper(neighbor);
         }
     }
 
@@ -97,5 +99,4 @@ public class Graph {
             }
         }
     }
-
 }
