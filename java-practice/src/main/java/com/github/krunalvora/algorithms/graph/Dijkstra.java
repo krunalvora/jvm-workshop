@@ -33,6 +33,7 @@ public class Dijkstra {
         // System.out.println(graph.getWeight(A, C));
 
         dijkstra(graph, A);
+        System.out.println("Shortest path from source to target: " + dijkstraSingleTarget(graph, A, C));
     }
 
    
@@ -88,6 +89,60 @@ public class Dijkstra {
         for (Node node: bestDistance.keySet()) {
             System.out.println(node.getLabel() + " : " + String.valueOf(bestDistance.get(node)));
         }
+
+    }
+
+
+    public static int dijkstraSingleTarget(DirectedWeightedGraph graph, Node source, Node target) {
+
+        Map<Node, List<Edge>> adjacencyList = graph.getAdjacencyList();
+
+        // min heap sorted by distance from node
+        PriorityQueue<Pair<Node, Integer>> minHeap = new PriorityQueue<>((a, b) -> a.getValue() - b.getValue());
+
+        Map<Node, Boolean> visited = new HashMap<>();
+
+        Map<Node, Node> previous = new HashMap<>();
+        
+        Map<Node, Integer> bestDistance = new HashMap<>();
+
+        for (Node node: adjacencyList.keySet()) {
+            visited.put(node, false);
+            previous.put(node, null);
+            bestDistance.put(node, Integer.MAX_VALUE);
+        }
+
+        bestDistance.put(source, 0);
+        minHeap.add(new Pair<>(source, 0));
+
+        while (!minHeap.isEmpty()) {
+            Pair<Node, Integer> pair = minHeap.poll();
+
+            Node currNode = pair.getKey();
+
+            // ONLY CHANGE from the above method
+            if (currNode == target) break;
+
+            if (visited.get(currNode)) continue;
+            visited.put(currNode, true);
+
+            int currDist = pair.getValue();
+
+            for (Edge edge: adjacencyList.get(currNode)) {
+                Node nextNode = edge.getDest();
+                if (visited.get(nextNode)) continue;
+
+                int nextDist = currDist + graph.getWeight(currNode, nextNode);
+
+                if (nextDist < bestDistance.get(nextNode)) {
+                    minHeap.add(new Pair<Node,Integer>(nextNode, nextDist));
+                    bestDistance.put(nextNode, nextDist);
+                    previous.put(nextNode, currNode);
+                }
+            }
+        }
+
+        return bestDistance.get(target);
 
     }
     
