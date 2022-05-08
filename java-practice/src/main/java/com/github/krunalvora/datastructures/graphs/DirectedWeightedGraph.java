@@ -4,11 +4,13 @@ import java.util.*;
 
 public class DirectedWeightedGraph {
     private Map<Node, List<Edge>> adjacencyList;
-    private Set<Node> visited;
 
     public DirectedWeightedGraph() {
         adjacencyList = new HashMap<>();
-        visited = new HashSet<>();
+    }
+
+    public Map<Node, List<Edge>> getAdjacencyList() {
+        return this.adjacencyList;
     }
 
     public void addNode(Node node) {
@@ -43,6 +45,12 @@ public class DirectedWeightedGraph {
         }
         return -1;
     }
+
+    public int getNumNodes() {
+        return adjacencyList.keySet().size();
+    }
+
+
 }
 
 class Node {
