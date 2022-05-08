@@ -1,4 +1,4 @@
-package com.github.krunalvora.datastructures.graphs;
+package com.github.krunalvora.datastructures.graph;
 
 import java.util.*;
 
@@ -38,8 +38,8 @@ public class DirectedWeightedGraph {
         if (adjacencyList.containsKey(source)) {
             List<Edge> edges = adjacencyList.get(source);
             for (Edge edge: edges) {
-                if (edge.dest == dest) {
-                    return edge.weight;
+                if (edge.getDest() == dest) {
+                    return edge.getWeight();
                 }
             }
         }
@@ -51,30 +51,4 @@ public class DirectedWeightedGraph {
     }
 
 
-}
-
-class Node {
-    String label;
-
-    public Node(String label) {
-        this.label = label;
-    }
-
-    public String toString() {
-        return label;
-    }
-}
-
-class Edge {
-    Node dest;
-    int weight;
-
-    public Edge(Node dest, int weight) {
-        this.dest = dest;
-        this.weight = weight;
-    }
-
-    public String toString(){
-        return "{ " + dest.toString() +" : " + String.valueOf(weight) + " }";
-    }
 }

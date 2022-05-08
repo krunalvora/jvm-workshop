@@ -1,6 +1,9 @@
-package com.github.krunalvora.datastructures.graphs;
+package com.github.krunalvora.algorithms.graph;
 
 import java.util.*;
+import com.github.krunalvora.datastructures.graph.DirectedWeightedGraph;
+import com.github.krunalvora.datastructures.graph.Edge;
+import com.github.krunalvora.datastructures.graph.Node;
 import javafx.util.Pair;
 
 public class Dijkstra {
@@ -70,7 +73,7 @@ public class Dijkstra {
             visited.put(currNode, true);
 
             for (Edge edge: adjacencyList.get(currNode)) {
-                Node neighbor = edge.dest;
+                Node neighbor = edge.getDest();
                 int neighborDist = currDist + graph.getWeight(currNode, neighbor);
 
                 if (visited.get(neighbor) == false && neighborDist < bestDistance.get(neighbor)) {
@@ -82,9 +85,9 @@ public class Dijkstra {
         }
 
         // print best distance
-        System.out.println("Best distances from " + source.label + ": ");
+        System.out.println("Best distances from " + source.getLabel() + ": ");
         for (Node node: bestDistance.keySet()) {
-            System.out.println(node.label + " : " + String.valueOf(bestDistance.get(node)));
+            System.out.println(node.getLabel() + " : " + String.valueOf(bestDistance.get(node)));
         }
 
     }

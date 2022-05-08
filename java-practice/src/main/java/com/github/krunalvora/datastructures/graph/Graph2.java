@@ -1,4 +1,4 @@
-package com.github.krunalvora.datastructures.graphs;
+package com.github.krunalvora.datastructures.graph;
 
 public class Graph2 {
 
