@@ -22,6 +22,8 @@ public class Dijkstra {
         graph.addEdge(B, D, 2);
 
         graph.print();
+
+        System.out.println(graph.getWeight(A, C));
     }
 
     public static void dijkstra(DirectedGraph g, int source) {

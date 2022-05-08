@@ -31,6 +31,18 @@ public class DirectedWeightedGraph {
             System.out.println(node.toString() + " : " + adjacencyList.get(node).toString());
         }
     }
+
+    public int getWeight(Node source, Node dest) {
+        if (adjacencyList.containsKey(source)) {
+            List<Edge> edges = adjacencyList.get(source);
+            for (Edge edge: edges) {
+                if (edge.dest == dest) {
+                    return edge.weight;
+                }
+            }
+        }
+        return -1;
+    }
 }
 
 class Node {
