@@ -57,29 +57,28 @@ public class Dijkstra {
         }
 
         bestDistance.put(source, 0);
-        minHeap.add(new Pair<Node, Integer>(source, 0));
+        minHeap.add(new Pair<>(source, 0));
 
-        // kinda BFS but with heap
         while (!minHeap.isEmpty()) {
             Pair<Node, Integer> pair = minHeap.poll();
 
             Node currNode = pair.getKey();
-            int currDist = pair.getValue();
 
-            if (visited.get(currNode) == true) {
-                continue;
-            }
-
+            if (visited.get(currNode)) continue;
             visited.put(currNode, true);
 
-            for (Edge edge: adjacencyList.get(currNode)) {
-                Node neighbor = edge.getDest();
-                int neighborDist = currDist + graph.getWeight(currNode, neighbor);
+            int currDist = pair.getValue();
 
-                if (visited.get(neighbor) == false && neighborDist < bestDistance.get(neighbor)) {
-                    bestDistance.put(neighbor, neighborDist);
-                    previous.put(neighbor, currNode);
-                    minHeap.add(new Pair<Node, Integer>(neighbor, neighborDist));
+            for (Edge edge: adjacencyList.get(currNode)) {
+                Node nextNode = edge.getDest();
+                if (visited.get(nextNode)) continue;
+
+                int nextDist = currDist + graph.getWeight(currNode, nextNode);
+
+                if (nextDist < bestDistance.get(nextNode)) {
+                    minHeap.add(new Pair<Node,Integer>(nextNode, nextDist));
+                    bestDistance.put(nextNode, nextDist);
+                    previous.put(nextNode, currNode);
                 }
             }
         }
