@@ -13,7 +13,7 @@ public class GraphMain {
         */
 
         // With an adjacency list
-        Graph graph = new Graph();
+        DirectedGraph graph = new DirectedGraph();
         graph.addNode(0);
         graph.addNode(1);
         graph.addNode(2);

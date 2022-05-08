@@ -2,11 +2,11 @@ package com.github.krunalvora.datastructures.graphs;
 
 import java.util.*;
 
-public class Graph {
+public class DirectedGraph {
     private Map<Integer, List<Integer>> adjacencyList;
     private Set<Integer> visited;
 
-    public Graph() {
+    public DirectedGraph() {
         adjacencyList = new HashMap<>();
         visited = new HashSet<>();
     }
