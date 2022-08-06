@@ -1,5 +1,6 @@
 rootProject.name = 'jvm-workshop'
 
 include ':async'
-include ':json-serde'
+include ':java-functional'
 include ':java-practice'
+include ':json-serde'
